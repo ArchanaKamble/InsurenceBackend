@@ -1,6 +1,8 @@
 package com.lti.services;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,7 @@ public class FetchVehicleServiceImpl implements FetchVehicleService {
 
 	@Autowired
 	private FetchVehicleDao dao;
-	public ArrayList<CarModel> getCarList() throws HrException {
+	public Map<String, Map<String,List<String>>> getCarList() throws HrException {
 		
 		return dao.getCarList();
 	}

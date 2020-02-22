@@ -1,35 +1,31 @@
 package com.lti.services;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.daos.InsuranceDao;
 import com.lti.daos.RegistrationDao;
-import com.lti.daos.RegistrationDaoImp;
 import com.lti.entities.BuyInsurance;
-import com.lti.entities.Users;
+import com.lti.entities.Plans;
 import com.lti.exceptions.HrException;
 
-
 @Service
-public class RegistrationServiceImp implements RegistrationService{
+public class InsuranceServiceImpl implements InsuranceService{
 
 	@Autowired
-	private RegistrationDao dao;
-
+	private InsuranceDao dao;
+	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public boolean addUser(Users user) throws HrException {
+	public boolean addDetails(BuyInsurance insurance) throws HrException {
 		
-		return dao.addUser(user);
-		
-	}
-
-	public ArrayList<Users> getUserList() throws HrException {
-		return dao.getUserList();
+		return dao.addDetails(insurance);
 	}
 	
-	
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public boolean addPlan(Plans plan) throws HrException {
+		
+		return dao.addPlan(plan);
+	}
 }

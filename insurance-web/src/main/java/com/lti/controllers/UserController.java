@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,13 +23,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.lti.entities.BuyInsurance;
 import com.lti.entities.Users;
 import com.lti.exceptions.HrException;
 import com.lti.services.RegistrationService;
 import com.lti.services.RegistrationServiceImp;
 
 @RestController
+@CrossOrigin
 public class UserController {
 
 	@Autowired
@@ -41,8 +45,10 @@ public class UserController {
 	
 	@ResponseBody
 	@PostMapping(value="/register", consumes="application/json")
-	public void addNewUser(@RequestBody Users user)
+	public void addNewUser(@RequestBody Users user,HttpServletResponse response)
 	{
+		
+		//response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
 		System.out.println(user);
 //		Users user =new Users();
 //	user.setName("Archana");
@@ -61,6 +67,7 @@ public class UserController {
 		}
 
 	}
+	
 	@GetMapping(value="/list", produces="application/json")
 	public @ResponseBody List<Users> getUserList(){
 		
@@ -74,4 +81,13 @@ public class UserController {
 		
 		return userList;
 	}
+	
+	
+
+
+	
+	
+	
+	
+	
 }

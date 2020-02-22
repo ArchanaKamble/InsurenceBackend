@@ -1,7 +1,9 @@
 package com.lti.daos;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,11 +22,27 @@ public class FetchVehicleDaoImp implements FetchVehicleDao {
 	@PersistenceContext
 	private EntityManager manager;
 	
-	public ArrayList<CarModel> getCarList() throws HrException {
+	public Map<String, Map<String,List<String>>> getCarList() throws HrException {
 		String strQry = "from CarModel";
 		Query qry = manager.createQuery(strQry);
 		List<CarModel> lst=qry.getResultList();
-		return (ArrayList<CarModel>) lst;
+		Map<String, Map<String,List<String>>> map = new HashMap<String, Map<String,List<String>>>();
+		Map<String,List<String>> map2 = new HashMap<String,List<String>>();
+		List<String> list = new ArrayList<String>();
+		for(CarModel c : lst){
+			map.put(c.getBrand(),map2);
+			if(map.containsKey(c.getBrand())){
+				map2.put(c.getModel(),list);
+				if(map2.containsKey(c.getModel())){
+					list.add(c.getVariant());
+
+				}
+							}
+		}
+//		 for(Map.Entry m:map.entrySet()){  
+//			   System.out.println(m.getKey()+"-"+m.getValue());  
+//			  }  
+		return map;
 	}
 	public ArrayList<BikeModel> getBikeList() throws HrException {
 		String strQry = "from BikeModel";

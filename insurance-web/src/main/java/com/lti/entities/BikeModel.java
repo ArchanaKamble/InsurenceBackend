@@ -22,16 +22,29 @@ public class BikeModel {
 	@Column(name = "VARIANT")
 	private String variant;
 
+	@Column(name = "MARKETPRICE")
+	private String marketPrice;
+	
 	public BikeModel() {
 		super();
 	}
 
-	public BikeModel(int bikeId, String manufacturer, String model, String variant) {
+
+	public BikeModel(int bikeId, String manufacturer, String model, String variant, String marketPrice) {
 		super();
 		this.bikeId = bikeId;
 		this.manufacturer = manufacturer;
 		this.model = model;
 		this.variant = variant;
+		this.marketPrice = marketPrice;
+	}
+
+	public String getMarketPrice() {
+		return marketPrice;
+	}
+
+	public void setMarketPrice(String marketPrice) {
+		this.marketPrice = marketPrice;
 	}
 
 	public int getBikeId() {
@@ -64,6 +77,13 @@ public class BikeModel {
 
 	public void setVariant(String variant) {
 		this.variant = variant;
+	}
+
+
+	@Override
+	public String toString() {
+		return "BikeModel [bikeId=" + bikeId + ", manufacturer=" + manufacturer + ", model=" + model + ", variant="
+				+ variant + ", marketPrice=" + marketPrice + "]";
 	}
 	
 }

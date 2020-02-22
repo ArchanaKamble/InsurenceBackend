@@ -23,17 +23,31 @@ public class CarModel {
 	
 	@Column(name = "VARIANT")
 	private String variant;
+	
+	@Column(name = "MARKETPRICE")
+	private String marketPrice;
 
 	public CarModel() {
 		super();
 	}
 
-	public CarModel(int carId, String brand, String model, String variant) {
+
+	public CarModel(int carId, String brand, String model, String variant, String marketPrice) {
 		super();
 		this.carId = carId;
 		this.brand = brand;
 		this.model = model;
 		this.variant = variant;
+		this.marketPrice = marketPrice;
+	}
+
+
+	public String getMarketPrice() {
+		return marketPrice;
+	}
+
+	public void setMarketPrice(String marketPrice) {
+		this.marketPrice = marketPrice;
 	}
 
 	public int getCarId() {
@@ -68,6 +82,13 @@ public class CarModel {
 		this.variant = variant;
 	}
 
+	@Override
+	public String toString() {
+		return "CarModel [carId=" + carId + ", brand=" + brand + ", model=" + model + ", variant=" + variant
+				+ ", marketPrice=" + marketPrice + "]";
+	}
+
+	
 	
 
 }

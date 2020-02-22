@@ -20,7 +20,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.lti.entities.BuyInsurance;
+import com.lti.entities.InsuranceDetails;
 import com.lti.entities.Users;
 import com.lti.exceptions.HrException;
 
@@ -43,5 +44,6 @@ public class RegistrationDaoImp implements RegistrationDao{
 		
 		return (ArrayList<Users>) lst;
 	}
+	
 
 }
