@@ -5,6 +5,6 @@ import com.lti.entities.Plans;
 import com.lti.exceptions.HrException;
 
 public interface InsuranceDao {
-	public boolean addDetails(BuyInsurance insurance) throws HrException;
-	public boolean addPlan(Plans plan) throws HrException;
+	public int addDetails(BuyInsurance insurance) throws HrException;
+	public int addPlan(Plans plan) throws HrException;
 }

@@ -4,11 +4,11 @@ public class ResultOfPremium {
 
 	private String providerName;
 	private double IDV;
-	private double finalNetPremium;
+	private int finalNetPremium;
 	public ResultOfPremium() {
 		super();
 	}
-	public ResultOfPremium(String providerName, double iDV, double finalNetPremium) {
+	public ResultOfPremium(String providerName, double iDV, int finalNetPremium) {
 		super();
 		this.providerName = providerName;
 		IDV = iDV;
@@ -26,10 +26,10 @@ public class ResultOfPremium {
 	public void setIDV(double iDV) {
 		IDV = iDV;
 	}
-	public double getFinalNetPremium() {
+	public int getFinalNetPremium() {
 		return finalNetPremium;
 	}
-	public void setFinalNetPremium(double finalNetPremium) {
+	public void setFinalNetPremium(int finalNetPremium) {
 		this.finalNetPremium = finalNetPremium;
 	}
 	@Override

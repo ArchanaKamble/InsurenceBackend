@@ -28,7 +28,7 @@ public class BuyInsuranceController {
 	
 	@ResponseBody
 	@PostMapping(value="/buy-insurance", consumes="application/json")
-	public void addInsuranceDetails(@RequestBody BuyInsurance insurance)
+	public int addInsuranceDetails(@RequestBody BuyInsurance insurance)
 	{
 //		insurance.setAgeOfCar(2);
 //		insurance.setBrand("Maruti");
@@ -42,27 +42,29 @@ public class BuyInsuranceController {
 //		insurance.setVariant("LXI(1298CC)");
 //		insurance.setVehiclePrice(50000000);
 		System.out.println(insurance);
+		int insuranceId = 0;
 		try {
-			service.addDetails(insurance);
+			 insuranceId=service.addDetails(insurance);
+			
 		} catch (HrException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		return insuranceId;
 	}
 	@ResponseBody
 	@PostMapping(value="/plan-insurance", consumes="application/json")
-	public void addPlan(@RequestBody Plans plan)
+	public int addPlan(@RequestBody Plans plan)
 	{
-
+		int planId = 0;
 		System.out.println(plan);
 		try {
-			service.addPlan(plan);
+			planId=service.addPlan(plan);
 		} catch (HrException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		return planId;
 	}
 	
 }

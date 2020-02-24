@@ -2,15 +2,20 @@ package com.lti.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "INSURANCE_TBL")
+@SequenceGenerator(name="seq", sequenceName="INSURANCESEQ", initialValue= 104,allocationSize=1)
 public class InsuranceDetails {
 
 	@Id
 	@Column(name = "INSURANCEID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	private int insuranceId;
 	
 	@Column(name = "USERID")

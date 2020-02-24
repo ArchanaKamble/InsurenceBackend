@@ -29,15 +29,8 @@ public class InsuranceDaoImpl implements InsuranceDao{
 	
 	
 	@Transactional(propagation=Propagation.REQUIRED)
-	public boolean addDetails(BuyInsurance insurance) throws HrException {
+	public int addDetails(BuyInsurance insurance) throws HrException {
 		
-		Query qry = manager.createQuery("Select e.carId from CarModel e where e.brand=:arg1 and  e.model=:arg2 and  e.variant=:arg3");
-		qry.setParameter("arg1", insurance.getBrand());
-		qry.setParameter("arg2", insurance.getModel());
-		qry.setParameter("arg3", insurance.getVariant());
-		int carId  = (Integer)qry.getSingleResult();
-		System.out.println("----------"+insurance);
-		System.out.println(carId);
 		InsuranceDetails insuranceDetails = new InsuranceDetails();
 		insuranceDetails.setAgeOfCar(insurance.getAgeOfCar());
 		insuranceDetails.setChasisNo(insurance.getChasisNo());
@@ -46,15 +39,23 @@ public class InsuranceDaoImpl implements InsuranceDao{
 		insuranceDetails.setLicenseNo(insurance.getLicenseNo());
 		insuranceDetails.setTypeOfVehicle(insurance.getTypeOfVehicle());
 		insuranceDetails.setUserId(insurance.getUserId());
+		
+		Query qry = manager.createQuery("Select e.carId from "+insurance.getTypeOfVehicle()+" e where e.brand=:arg1 and  e.model=:arg2 and  e.variant=:arg3");
+		qry.setParameter("arg1", insurance.getBrand());
+		qry.setParameter("arg2", insurance.getModel());
+		qry.setParameter("arg3", insurance.getVariant());
+		int carId  = (Integer)qry.getSingleResult();
+		System.out.println("----------"+insurance);
+		System.out.println(carId);
 		insuranceDetails.setCarId(carId);
 		System.out.println(insuranceDetails);
 		manager.persist(insuranceDetails);
 
-		return true;
+		return insuranceDetails.getInsuranceId();
 	}
 	@Transactional(propagation=Propagation.REQUIRED)
-	public boolean addPlan(Plans plan) throws HrException {
+	public int addPlan(Plans plan) throws HrException {
 		manager.persist(plan);
-		return true;
+		return plan.getPlanId();
 	}
 }

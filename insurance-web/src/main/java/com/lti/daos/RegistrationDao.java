@@ -12,4 +12,6 @@ public interface RegistrationDao {
 	public boolean addUser(Users user) throws HrException;
 	
 	public ArrayList<Users> getUserList() throws HrException;
+	public Users checkCredentials(String emailId, String pass) throws HrException;
+	
 }

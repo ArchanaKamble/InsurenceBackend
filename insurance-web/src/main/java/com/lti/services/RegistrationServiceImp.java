@@ -27,8 +27,15 @@ public class RegistrationServiceImp implements RegistrationService{
 		
 	}
 
+	
 	public ArrayList<Users> getUserList() throws HrException {
 		return dao.getUserList();
+	}
+
+
+	public Users checkCredentials(String emailId, String pass) throws HrException {
+		
+		return dao.checkCredentials(emailId,pass);
 	}
 	
 	

@@ -18,13 +18,13 @@ public class InsuranceServiceImpl implements InsuranceService{
 	private InsuranceDao dao;
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public boolean addDetails(BuyInsurance insurance) throws HrException {
+	public int addDetails(BuyInsurance insurance) throws HrException {
 		
 		return dao.addDetails(insurance);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public boolean addPlan(Plans plan) throws HrException {
+	public int addPlan(Plans plan) throws HrException {
 		
 		return dao.addPlan(plan);
 	}

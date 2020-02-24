@@ -29,12 +29,14 @@ public class Users {
 	private Date dob;
 	private long contact;
 	private  String address;
+	private int policyNo;
 	
 	public Users() {
 		super();
 	}
 
-	public Users(int userId, String name, String email, String password, Date dob, long contact, String address) {
+	public Users(int userId, String name, String email, String password, Date dob, long contact, String address,
+			int policyNo) {
 		super();
 		this.userId = userId;
 		this.name = name;
@@ -43,6 +45,16 @@ public class Users {
 		this.dob = dob;
 		this.contact = contact;
 		this.address = address;
+		this.policyNo = policyNo;
+	}
+
+
+	public int getPolicyNo() {
+		return policyNo;
+	}
+
+	public void setPolicyNo(int policyNo) {
+		this.policyNo = policyNo;
 	}
 
 	public int getUserId() {

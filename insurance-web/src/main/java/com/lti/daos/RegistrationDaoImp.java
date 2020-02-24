@@ -44,6 +44,13 @@ public class RegistrationDaoImp implements RegistrationDao{
 		
 		return (ArrayList<Users>) lst;
 	}
+	public Users checkCredentials(String emailId, String pass) throws HrException {
+		String strQry = "from Users u where u.email=:email";
+		Query qry = manager.createQuery(strQry);
+		qry.setParameter("email",emailId);
+		Users user = (Users) qry.getSingleResult();
+		return user;
+	}
 	
 
 }
