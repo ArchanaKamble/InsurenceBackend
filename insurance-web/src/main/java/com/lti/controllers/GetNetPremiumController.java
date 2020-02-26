@@ -40,18 +40,12 @@ public class GetNetPremiumController {
 	GetNetPremiumService service;
 	@Autowired
 	private JavaMailSender sender;
-	@Autowired
-    private SimpleMailMessage preConfiguredMessage;
-//	@GetMapping('/')
-//	public String startpage()
-//	{
-//		return ""
-//	}
+	
+	
 	@GetMapping(value="/getPremium", produces="application/json")
 	public @ResponseBody  ArrayList<ResultOfPremium> getNetPremium(@RequestParam int insuranceId){
 		
 		 ArrayList<ResultOfPremium> result = null;
-		System.out.println("insuranceId="+insuranceId);
 		try {
 			result = service.getNetPremium(insuranceId);
 		} catch (HrException e) {
@@ -121,17 +115,17 @@ public class GetNetPremiumController {
 				public void prepare(MimeMessage mimeMessage) throws Exception {
 					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(emailId));
 					mimeMessage.setFrom(new InternetAddress("archanask267@gmail.com"));
-					mimeMessage.setSubject("Insurance2");
+					mimeMessage.setSubject("Insurance");
 					mimeMessage.setText("with atttachment");
 					Multipart content = new MimeMultipart();
 				
 					//Text body part
 					MimeBodyPart textBodyPart = new MimeBodyPart();
-					textBodyPart.setText("My multipart text");
+					textBodyPart.setText("Your insurance is approved by BUNK INSURANCE. Further details are given in attachment given below.");
 					
 					//Attachment body part
 					MimeBodyPart pdf= new MimeBodyPart();
-					pdf.attachFile("C:/Users/lntinfotech/Desktop/"+policyNo+".pdf");
+					pdf.attachFile("C:\\Users\\lntinfotech\\Desktop\\pdfs\\"+policyNo+".pdf");
 					
 					//attach body parts
 					content.addBodyPart(textBodyPart);

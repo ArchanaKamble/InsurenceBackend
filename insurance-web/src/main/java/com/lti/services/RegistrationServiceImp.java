@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.daos.RegistrationDao;
-import com.lti.daos.RegistrationDaoImp;
-import com.lti.entities.BuyInsurance;
 import com.lti.entities.Users;
 import com.lti.exceptions.HrException;
 
@@ -33,7 +31,7 @@ public class RegistrationServiceImp implements RegistrationService{
 	}
 
 
-	public Users checkCredentials(String emailId, String pass) throws HrException {
+	public Users checkCredentials(String emailId, String pass) {
 		
 		return dao.checkCredentials(emailId,pass);
 	}

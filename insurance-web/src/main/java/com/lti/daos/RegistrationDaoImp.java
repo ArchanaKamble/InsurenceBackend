@@ -1,27 +1,15 @@
 package com.lti.daos;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.lti.entities.BuyInsurance;
-import com.lti.entities.InsuranceDetails;
 import com.lti.entities.Users;
 import com.lti.exceptions.HrException;
 
@@ -44,12 +32,17 @@ public class RegistrationDaoImp implements RegistrationDao{
 		
 		return (ArrayList<Users>) lst;
 	}
-	public Users checkCredentials(String emailId, String pass) throws HrException {
+	public Users checkCredentials(String emailId, String pass) {
 		String strQry = "from Users u where u.email=:email";
 		Query qry = manager.createQuery(strQry);
 		qry.setParameter("email",emailId);
-		Users user = (Users) qry.getSingleResult();
-		return user;
+		try {
+			Users user = (Users) qry.getSingleResult();
+			return user;
+		} catch(Exception e){
+			return null;
+		}
+		
 	}
 	
 

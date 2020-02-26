@@ -1,8 +1,5 @@
 package com.lti.entities;
 
-import javax.persistence.Entity;
-
-
 public class BuyInsurance {
 
 	private int insuranceId;

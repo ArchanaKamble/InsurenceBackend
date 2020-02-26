@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.lti.entities.BikeModel;
-import com.lti.entities.CarModel;
 import com.lti.exceptions.HrException;
 
 public interface FetchVehicleService {

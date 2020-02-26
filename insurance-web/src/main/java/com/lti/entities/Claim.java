@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="INSURANCECLAIM")
 @SequenceGenerator(name="seq", sequenceName="CLAIMSEQ", initialValue= 104,allocationSize=1)
@@ -21,14 +23,15 @@ public class Claim {
 	@Column(name="INSURANCEID")
 	private int insuranceId;
 	@Column(name="MOBILENO")
-	private double mobileNo;
+	private long mobileNo;
 	@Column(name="REASON")
 	private String reason;
 	@Column(name="PROOF")
 	private String Proof;
 	@Column(name="POLICYNO")
 	private int policyNo;
-	@Column(name="claimDATE")
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@Column(name="CLAIMDATE")
 	private Date claimDate;
 	@Column(name="STATUS")
 	private String status;
@@ -40,7 +43,7 @@ public class Claim {
 	}
 
 	
-	public Claim(int claimId, int insuranceId, double mobileNo, String reason, String Proof, int policyNo,
+	public Claim(int claimId, int insuranceId, long mobileNo, String reason, String Proof, int policyNo,
 			Date claimDate, String status, int price) {
 		super();
 		this.claimId = claimId;
@@ -71,11 +74,11 @@ public class Claim {
 		this.insuranceId = insuranceId;
 	}
 
-	public double getMobileNo() {
+	public long getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(double mobileNo) {
+	public void setMobileNo(long mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 

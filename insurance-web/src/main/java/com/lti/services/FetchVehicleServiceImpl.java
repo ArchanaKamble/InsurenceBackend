@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.daos.FetchVehicleDao;
 import com.lti.entities.BikeModel;
-import com.lti.entities.CarModel;
+
 import com.lti.exceptions.HrException;
 
 @Service

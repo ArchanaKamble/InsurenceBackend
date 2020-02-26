@@ -21,12 +21,13 @@ public class ClaimController {
 	@PostMapping(value = "/claim",produces="application/json")
 	public @ResponseBody Claim addClaim(@RequestBody Claim claim) {
 		Claim c = null;
+		System.out.println(claim);
 		try {
 			c= service.getClaim(claim);
 		} catch (HrException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return c;
 	}
 }

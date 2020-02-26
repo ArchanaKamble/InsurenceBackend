@@ -1,24 +1,19 @@
 package com.lti.daos;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.springframework.aop.framework.autoproxy.InfrastructureAdvisorAutoProxyCreator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.entities.BuyInsurance;
-import com.lti.entities.CarModel;
+
 import com.lti.entities.InsuranceDetails;
 import com.lti.entities.Plans;
-import com.lti.entities.Users;
+
 import com.lti.exceptions.HrException;
 
 @Repository
@@ -45,10 +40,7 @@ public class InsuranceDaoImpl implements InsuranceDao{
 		qry.setParameter("arg2", insurance.getModel());
 		qry.setParameter("arg3", insurance.getVariant());
 		int carId  = (Integer)qry.getSingleResult();
-		System.out.println("----------"+insurance);
-		System.out.println(carId);
 		insuranceDetails.setCarId(carId);
-		System.out.println(insuranceDetails);
 		manager.persist(insuranceDetails);
 
 		return insuranceDetails.getInsuranceId();

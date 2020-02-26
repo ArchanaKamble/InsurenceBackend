@@ -41,13 +41,11 @@ public class BuyInsuranceController {
 //		insurance.setUserId(102);
 //		insurance.setVariant("LXI(1298CC)");
 //		insurance.setVehiclePrice(50000000);
-		System.out.println(insurance);
 		int insuranceId = 0;
 		try {
 			 insuranceId=service.addDetails(insurance);
 			
 		} catch (HrException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return insuranceId;

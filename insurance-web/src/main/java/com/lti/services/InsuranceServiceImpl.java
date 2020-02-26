@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.daos.InsuranceDao;
-import com.lti.daos.RegistrationDao;
 import com.lti.entities.BuyInsurance;
 import com.lti.entities.Plans;
 import com.lti.exceptions.HrException;

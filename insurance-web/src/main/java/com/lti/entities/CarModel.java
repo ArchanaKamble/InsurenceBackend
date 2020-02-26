@@ -1,6 +1,5 @@
 package com.lti.entities;
 
-import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 public class CarModel {
 
 	@Id
-	@Column(name = "CARID")
+	@Column(name = "VEHICLEID")
 	private int carId;
 	
 	@Column(name = "BRAND")

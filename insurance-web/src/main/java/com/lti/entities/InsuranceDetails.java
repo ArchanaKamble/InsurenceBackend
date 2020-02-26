@@ -36,7 +36,7 @@ public class InsuranceDetails {
 	@Column(name = "AGEOFCAR")
 	private int ageOfCar;
 	
-	@Column(name = "CARID")
+	@Column(name = "VEHICLEID")
 	private int carId;
 	
 

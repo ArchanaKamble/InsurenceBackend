@@ -10,11 +10,11 @@ import javax.persistence.Table;
 public class BikeModel {
 
 	@Id
-	@Column(name = "bikeID")
-	private int bikeId;
+	@Column(name = "VEHICLEID")
+	private int carId;
 	
 	@Column(name = "MANUFACTURER")
-	private String manufacturer;
+	private String brand;
 	
 	@Column(name = "MODEL")
 	private String model;
@@ -29,15 +29,16 @@ public class BikeModel {
 		super();
 	}
 
-
-	public BikeModel(int bikeId, String manufacturer, String model, String variant, String marketPrice) {
+	public BikeModel(int carId, String brand, String model, String variant, String marketPrice) {
 		super();
-		this.bikeId = bikeId;
-		this.manufacturer = manufacturer;
+		this.carId = carId;
+		this.brand = brand;
 		this.model = model;
 		this.variant = variant;
 		this.marketPrice = marketPrice;
 	}
+
+
 
 	public String getMarketPrice() {
 		return marketPrice;
@@ -47,20 +48,14 @@ public class BikeModel {
 		this.marketPrice = marketPrice;
 	}
 
-	public int getBikeId() {
-		return bikeId;
+	
+
+	public int getCarId() {
+		return carId;
 	}
 
-	public void setBikeId(int bikeId) {
-		this.bikeId = bikeId;
-	}
-
-	public String getManufacturer() {
-		return manufacturer;
-	}
-
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
+	public void setCarId(int carId) {
+		this.carId = carId;
 	}
 
 	public String getModel() {
@@ -79,11 +74,12 @@ public class BikeModel {
 		this.variant = variant;
 	}
 
+	public String getBrand() {
+		return brand;
+	}
 
-	@Override
-	public String toString() {
-		return "BikeModel [bikeId=" + bikeId + ", manufacturer=" + manufacturer + ", model=" + model + ", variant="
-				+ variant + ", marketPrice=" + marketPrice + "]";
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 	
 }

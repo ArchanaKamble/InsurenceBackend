@@ -27,11 +27,12 @@ public class ClaimDaoImpl implements ClaimDao{
 		Query qry4 = manager.createQuery(strQry);
 		qry4.setParameter("arg",claim.getInsuranceId());
 		Plans plan = new Plans();
-		plan=(Plans) qry4.setFirstResult(0);
+		plan=(Plans) qry4.getSingleResult();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date1 = claim.getStartDate();
 		Date date = plan.getEndDate();
-		if(date1.compareTo(date)<0){
+		System.out.println(date1);
+		System.out.println(date);
 			Query qry = manager.createQuery("Select e.carId from InsuranceDetails e where e.insuranceId=:arg");
 			qry.setParameter("arg", claim.getInsuranceId());
 			int carId  = (Integer)qry.getSingleResult();
@@ -51,6 +52,7 @@ public class ClaimDaoImpl implements ClaimDao{
 				 price =Double.parseDouble((String) qry3.getSingleResult());
 			}catch(Exception e){e.printStackTrace();
 			price=0;}
+			if(date1.compareTo(date)<0){
 			if(ageOfCar < 1) {
 				percentOfDepreciation = 0.15;
 				marketprice= (int) (price*percentOfDepreciation);
@@ -72,11 +74,12 @@ public class ClaimDaoImpl implements ClaimDao{
 				marketprice= (int) (price*percentOfDepreciation);
 			}
 			claim.setPrice(marketprice);
+			manager.persist(claim);
 		}
 		else{
 			
 		}
-		return null;
+		return claim;
 	}
 
 }
